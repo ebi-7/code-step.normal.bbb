@@ -1,0 +1,759 @@
+@charset "UTF-8";
+/* 日本語 */
+
+/*scss set*/
+$color01:#333;
+$color02:#FF2A2A;
+$color03:#7A051C;
+$color04:#fff;
+$color05:#CCC;
+$color06:#FF0033;
+$color07:#E9F1FB;
+$color08:#E8E8E8;
+
+$f-fmaily:"游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+
+
+@mixin txt-set{
+    line-height: 1.6em;
+    text-align: justify;
+    color: $color01;
+}
+@mixin flex-set {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+:root{
+    font-size: 62.5%;
+}
+body{
+    margin:0;
+    color: $color01;
+    font-family:$f-fmaily;
+    font-size: 1.6rem;
+}
+a{
+    color: $color01;
+}
+img{
+    max-width: 100%;
+    height: auto;
+    vertical-align:bottom;
+}
+.wrapper{
+    max-width: 860px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+.logo{
+    width: 100px;
+    height: auto;
+}
+
+
+
+//header
+.headerArea{
+    position: relative;
+
+}
+
+.head__logo{
+    margin: 1.6em 0 0 20px;
+}
+
+/*▼▼ハンバーガーボタン▼▼*/
+.humburgerStyle{
+    position: fixed;
+    top:0;
+    right:0;
+    width: 75px;
+    height:75px;
+    background: $color02;
+    z-index: 10;
+    &__bar{
+        display: inline-block;
+        transition: all .4s;/*アニメーションの設定*/
+        position: absolute;
+        left: 18px;
+        width: 50%;
+        height: 2px;
+        background: $color04;
+    }
+    &__bar:nth-of-type(1){
+        top:24px;
+    }
+    &__bar:nth-of-type(2){
+        top:36px;
+    }
+    &__bar:nth-of-type(3){
+        top:48px;
+    }
+}
+
+.humburgerStyle.active{
+    position: fixed;
+     z-index: 1000;
+    .humburgerStyle__bar{
+        background: $color04;
+    }
+
+    .humburgerStyle__bar:nth-of-type(1){
+        top:24px;
+        left: 20px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 50%;
+    }
+    .humburgerStyle__bar:nth-of-type(2){
+        opacity: 0;/*真ん中の線は透過*/
+
+    }
+    .humburgerStyle__bar:nth-of-type(3){
+        top: 36px;
+        left: 20px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 50%;
+
+    }
+}
+/*▲▲ハンバーガーボタン▲▲*/
+
+/*▼▼ハンバーガーホバー時▼▼*/
+.humburgerStyle:hover{
+    opacity: 0.7;
+}
+/*▲▲ハンバーガーホバー時▲▲*/
+
+/*▼▼ハンバーガークリック時▼▼*/
+.mainMenuArea{
+    display: none;
+    position: relative;
+}
+.mainMenuArea.active{
+    display: block;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    top:0;
+    font-weight: bold;
+
+}
+.mainMenuArea__menu{
+    width: 100%;
+    text-align: center;
+    margin:50px auto 20px auto;
+    &--link{
+        color: $color04;
+        display: block;
+        margin-bottom: 1.6em;
+    }
+}
+
+#bgCover.active{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: $color02;
+    z-index: 1;
+}
+
+.mainMenuArea__btn{
+    text-align: center;
+    &--link{
+        border: 1px $color04 solid;
+        display: inline-block;
+        padding: 1em 2em;
+        position: relative;
+        color: $color04;
+        &::after{
+            content: '';
+            border-bottom: 1px $color04 solid;
+            border-right: 1px $color04 solid;
+            position: absolute;
+            top: 10px;
+            right: -10px;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+/*▲▲ハンバーガークリック時▲▲*/
+
+
+//mv
+.mvArea{
+    background: #fff;
+    width: 100%;
+}
+.mvImgs{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    &__img{
+        z-index: 0;
+        position: absolute;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        animation: anime-change 15s 0s infinite;
+    }
+    // &__img:nth-of-type(1){
+    //     animation-delay: 0s;
+    // }
+    &__img:nth-of-type(2){
+        animation-delay: 5s;
+    }
+    &__img:nth-of-type(3){
+        animation-delay: 10s;
+    }
+
+    @keyframes anime-change {
+        0%{ opacity: 0;}
+        15%{ opacity: 1;}
+        40%{ opacity: 1;}
+        50%{ opacity: 0;}
+        100%{ opacity: 0;}
+
+    }
+
+}
+.shadowBox{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    &::after{
+        position: absolute;
+        content: '';
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        box-shadow: inset 0 0 15px 15px #fff;
+    }
+}
+
+.mvTexts{
+    padding:0 20px;
+    &__title{
+        font-size: 2.8rem;
+        font-weight: bold;
+        line-height: 1.6em;
+    }
+    &__btn{
+        &--link{
+            margin-top:8px;
+            background-color:$color06;
+            border-radius: 8px;
+            cursor:pointer;
+            box-shadow: 0 6px 0 0 $color03;
+            display: block;
+            color: $color04;
+            font-size: 2.4rem;
+            padding: .6em 0;
+            text-align: center;
+            transition: transform .6s ease;
+            position: relative;
+            &:hover{
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            &::after{
+                position: absolute;
+                top:18px;
+                right: 28px;
+                content: "";
+                vertical-align: middle;
+                width: 20px;
+                height: 20px;
+                border-top: 3px solid $color04;
+                border-right: 3px solid $color04;
+                transform: rotate(45deg);
+            }
+
+        }
+    }
+}
+
+
+
+//main
+.mainArea{
+    &__title{
+        font-size: 2.8rem;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        margin-bottom: 50px;
+        padding-top: 90px;
+        &::after{
+            position: absolute;
+            border-bottom: 4px solid #353535;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            content: '';
+            padding-top: 0.2em;
+        }
+
+    }
+}
+
+//sec01
+.sec01{
+    &__bg{
+        background: $color02;
+        padding: 60px 0;
+    }
+    &__rightbox,&__leftbox{
+        background: $color04;
+        @include flex-set;
+        justify-content: center;
+        padding: 2.4em;
+        border-radius: 0 20px 20px 0;
+
+
+    }
+    &__leftbox{
+        margin-right: 20px;
+    }
+    &__rightbox{
+        border-radius: 20px 0 0 20px;
+        margin-left: 20px;
+        margin-top: 40px;
+
+    }
+    &__icon01,&__icon02{
+        display: block;
+
+    }
+    &__icon01{
+        width: 80px;
+        height: auto;
+    }
+    &__icon02{
+        width: 50px;
+        height: auto;
+    }
+    &__text{
+        color: $color02;
+        font-size: 2.4rem;
+        font-weight: bold;
+        padding-left: 1em;
+    }
+    &__subtext{
+        font-weight: normal;
+        font-size: 1.8rem;
+        color: $color01;
+        display: block;
+    }
+}
+
+
+//スライドアニメーション
+
+.slideRight{
+	animation-name:slideRight;
+	animation-duration:0.8s;
+	animation-fill-mode:forwards;
+    opacity: 0;
+  }
+
+  @keyframes slideRight {
+    from {
+        transform: translateX(-100%); /*要素を左の枠外に移動*/
+            opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);/*要素を元の位置に移動*/
+        opacity: 1;
+      }
+    }
+
+
+    .slideLeft{
+        animation-name:slideLeft;
+        animation-duration:0.8s;
+        animation-fill-mode:forwards;
+        opacity: 0;
+      }
+
+      @keyframes slideLeft {
+        from {
+            transform: translateX(100%); /*要素を左の枠外に移動*/
+                opacity: 0;
+          }
+
+          to {
+            transform: translateX(0);/*要素を元の位置に移動*/
+            opacity: 1;
+          }
+        }
+
+
+//sec02
+.sec02{
+    &__bg{
+        background:$color04;
+    }
+}
+.chatBox{
+    text-align: center;
+    margin-top: 40px;
+    &__faceImg{
+        background: $color05;
+        border-radius: 50%;
+        width: 120px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    &__faceName{
+        text-align: center;
+        display: inline-block;
+        width: 120px;
+        font-size: 1.2rem;
+    }
+    &__faceArea{
+        margin-top: 1em;
+    }
+
+    &__talk{
+        background: $color07;
+        border-radius: 10px;
+        position: relative;
+        padding: 1.6em;
+        @include txt-set;
+        &::before{
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            /* borderで三角形を作る */
+            border: 10px solid transparent;
+            border-top: 10px solid $color07;
+            /* 配置する */
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+    }
+    .mt0{
+        margin-top: 0;
+    }
+}
+
+//チャットふわっと
+.chatAnime{
+    animation-name:fadeInAnime;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    opacity:0;
+}
+@keyframes fadeInAnime{
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+
+//sec03
+.sec03{
+    margin-top: 100px;
+       .mainArea__title{
+            padding-top: 50px;
+        }
+        &__bg{
+            background: $color08;
+            background-image: url("../img/bg.gif");
+            padding-bottom: 30px;
+            background-size: 700px 700px; /* image size */
+            animation: bg 10s infinite linear;
+        }
+        @keyframes bg {
+            0% {
+              background-position: 0 0;
+            }
+            100% {
+              background-position: -700px 700px;
+            }
+          }
+        
+
+}
+
+
+
+.cardBox{
+    background:$color04;
+    margin-bottom: 32px;
+    padding: 2.4em;
+    border-radius: 10px;
+    &__title{
+        text-align: center;
+        font-size: 2.4rem;
+        font-weight: bold;
+    }
+    &__subtitle{
+        font-size: 1.6rem;
+        font-weight: bold;
+        display: block;
+        padding: 1em 0;
+
+    }
+    &__text{
+        line-height: 1.6em;
+    }
+}
+
+
+//sec04
+.sec04{
+    text-align: center;
+    margin-top: 80px;
+    &__title{
+      font-size: 2.4rem;
+      font-weight: bold;
+
+    }
+    &__text{
+        font-size: 1.6rem;
+        display: block;
+        margin-top: 1em;
+        line-height: 1.6em;
+    }
+
+    .btnApply{
+        margin-top: 2.4em;
+        text-align: center;
+        &--link{
+            border-radius: 50px;
+            padding: .8em 0;
+            display: block;
+            background: $color02;
+            color: $color04;
+            font-weight: bold;
+            font-size: 2.4rem;
+        }
+    }
+
+}
+
+
+//footer
+.footer{
+    background: $color05;
+    margin-top: 100px;
+}
+.footerNavArea{
+    @include flex-set;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    padding-top: 50px;
+
+}
+.footerNavBlock{
+    width: 50%;
+    margin-bottom: 2.4em;
+    &__title{
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    &__listBox{
+        padding-top: 1em;
+        font-size: 1.2rem;
+        line-height: 1.6em;
+        padding-left: 1em;
+        
+    }
+}
+
+.copyright{
+    padding: 2em 0;
+    text-align: center;
+}
+
+
+
+/*PC*/
+@media screen and (min-width: 900px){
+
+    //header
+    .head__logo{
+        margin: 40px 0 0 40px;
+    }
+
+    //mv
+    .mvArea{
+        @include flex-set;
+        flex-direction: row-reverse;
+        width: 100%;
+        position: relative;
+    }
+    .mvImgs{
+        max-width: 80%;
+        height: 800px;
+    }
+    .shadowBox{
+        height: 800px;
+    }
+
+    .mvTexts{
+        position: absolute;
+        top:50%;
+        left: 6%;
+        transform: translateY(-50%);
+        &__title{
+            font-size: 4.6rem;
+            line-height: 1.4em;
+        }
+
+    }
+    //main
+    .mainArea__title{
+        font-size: 3.6rem;
+        margin-bottom: 80px;
+        padding-top: 120px;
+    }
+    //sec01
+    .sec01{
+        &__bg{
+            position: relative;
+            height: 570px;
+        }
+        &__leftbox,&__rightbox{
+            width: 50%;
+            padding: 5em;
+            position: absolute;
+        }
+
+        &__leftbox{
+            left:0;
+        }
+        &__rightbox{
+            right: 0;
+            top: 260px;
+        }
+        &__text{
+            font-size: 2.8rem;
+        }
+    }
+
+    //sec02
+    .chatBox{
+        @include flex-set;
+        justify-content: flex-start;
+        width: 100%;
+        margin-bottom: 40px;
+        &__faceArea{
+            width: 20%;
+        }
+        &__talk{
+            width: 80%;
+            margin: 0;
+            &::before{
+                content: "";
+                /* borderで三角形を作る */
+                border: 10px solid transparent;
+                border-left: 10px solid $color07;
+                /* 配置する */
+                position: absolute;
+                top: 70%;
+                left: 100%;
+                transform: translateY(-70%);
+            }
+    
+        }
+        // .mt0{
+        // }
+    }
+
+    .chatBox:nth-child(even){
+        flex-direction: row-reverse;
+
+    }
+
+    //sec03
+    .sec03 .mainArea__title {
+        padding-top: 80px;
+    }
+    .cardBlock{
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .cardBox{
+        width: calc((100% - 20px) / 2);
+        &__title{
+            font-size: 2.8rem;
+        }
+        &__subtitle{
+            font-size: 1.8rem;
+        }
+    }
+
+
+    //sec04
+    .sec04{
+        margin-top: 120px;
+        &__title{
+            font-size: 3.2rem;
+        }
+        &__text{
+            font-size: 1.8rem;
+        }
+        .btnApply--link{
+            display: block;
+            border: $color02 solid 2px;
+            font-size: 2.8rem;
+             &:hover{
+                background:$color04;
+                border: $color02 solid 2px;
+                color: $color02;
+                transition : 0.2s;
+               
+             }
+        }
+    }
+
+    //footer
+    .footerNavArea{
+        flex-wrap: nowrap;
+        
+
+    }
+    .footerNavBlock{
+        &__title{
+            font-size: 1.6rem;
+        }
+        li{
+            font-size: 1.6rem;
+            line-height: 1.8em;
+        }
+
+    }
+
+
+
+}
+
+
+
